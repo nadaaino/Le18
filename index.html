@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 18 Quiz: Mutations & Biotechnology Principles 2</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --background: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --success: #16a34a;
+            --error: #dc2626;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .student-info-card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input {
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .section-divider {
+            margin: 40px 0 20px 0;
+            font-size: 1.3rem;
+            color: #1e3a8a;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 8px;
+        }
+
+        .question-card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-label:hover {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .option-label input {
+            margin-right: 12px;
+            transform: scale(1.1);
+        }
+
+        .option-label.correct-answer {
+            background-color: #dcfce7 !important;
+            border-color: var(--success) !important;
+            color: #14532d;
+            font-weight: 500;
+        }
+
+        .option-label.incorrect-choice {
+            background-color: #fee2e2 !important;
+            border-color: var(--error) !important;
+            color: #7f1d1d;
+        }
+
+        .feedback-text {
+            margin-top: 12px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .feedback-text.correct {
+            display: block;
+            background-color: #f0fdf4;
+            color: var(--success);
+        }
+
+        .feedback-text.incorrect {
+            display: block;
+            background-color: #fef2f2;
+            color: var(--error);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 40px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .submit-btn:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        #results-summary {
+            display: none;
+            background: #eff6ff;
+            border: 2px solid #bfdbfe;
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #results-summary h2 {
+            color: #1e40af;
+            margin: 0 0 10px 0;
+        }
+
+        #results-summary p {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Lecture 18 Assessment</h1>
+        <p>Mutations and Biotechnology Principles 2</p>
+    </header>
+
+    <div id="results-summary">
+        <h2>Quiz Completed!</h2>
+        <p id="score-display"></p>
+    </div>
+
+    <form id="quiz-form" action="https://formspree.io/f/xgorlkjl" method="POST">
+        
+        <div class="student-info-card">
+            <div class="form-group">
+                <label for="student-name">Full Student Name *</label>
+                <input type="text" id="student-name" name="Student Name" required placeholder="Enter your first and last name">
+            </div>
+        </div>
+
+        <input type="hidden" name="_subject" value="Lecture 18 Quiz Results Submission">
+        <input type="hidden" id="hidden-score" name="Final Score">
+
+        <div class="section-divider">Part 1: Core Knowledge & Concepts</div>
+
+        <div class="question-card" data-q="1">
+            <div class="question-text">1. What is the main objective of Molecular Cloning?</div>
+            <div class="options-container">
+                <label class="option-label"><input type="radio" name="q1" value="A" required> A) To completely sequence a target genome from scratch</label>
+                <label class="option-label"><input type="radio" name="q1" value="B"> B) To isolate copies of a gene or specific within DNA segments</label>
+                <label class="option-label"><input type="radio" name="q1" value="C"> C) To permanently alter cell membrane electrical charges using a matrix</label>
+                <label class="option-label"><input type="radio" name="q1" value="D"> D) To eliminate restriction enzyme digestion sites inside an unknown plasmid</label>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="question-card" data-q="2">
+            <div class="question-text">2. Which definition accurately captures the primary function of the Polymerase Chain Reaction (PCR)?</div>
+            <div class="options-container">
+                <label class="option-label"><input type="radio" name="q2" value="A" required> A) An in vitro technique generating huge amounts of a specific DNA segment from a small sample</label>
+                <label class="option-label"><input type="radio" name="q2" value="B"> B) An in vivo expression system using prokaryotic translation apparatus</label>
+                <label class="option-label"><input type="radio" name="q2" value="C"> C) A method specialized purely in identifying distinct sequence point mutations via base deletions</label>
+                <label class="option-label"><input type="radio" name="q2" value="D"> D) A separation method dependent wholly on structural differences in cell membrane carbohydrates</label>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="question-card" data-q="3">
+            <div class="question-text">3. In a typical PCR setup, what determines the start and stop boundaries of the target region being amplified?</div>
+            <div class="options-container">
+                <label class="option-label"><input type="radio" name="q3" value="A" required> A) The concentration of ddNTP structural chain-terminators added</label>
+                <label class="option-label"><input type="radio" name="q3" value="B"> B) The sequence specificity of the short DNA primers used</label>
+                <label class="option-label"><input type="radio" name="q3" value="C"> C) The overall electric potential set across the agarose matrix</label>
+                <label class="option-label"><input type="radio" name="q3" value="D"> D) The type of buffer solution utilized during restriction enzyme processing</label>
+            </div>
+            <div class="feedback-text"></div>
+        </div>
+
+        <div class="question-card" data-q="4">
+            <div class="question-text">4. What is the fundamental property used by Gel Electrophoresis to separate nucleic acid molecules?</div>
+            <div class="options-container">
+                <label class="option-label">
+                  
